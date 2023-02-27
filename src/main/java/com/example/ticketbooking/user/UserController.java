@@ -28,10 +28,10 @@ public class UserController {
         return service.findById(id);
     }
 
-    @PostMapping("/users")
-    User addUser(@RequestBody User newUser) {
-        return service.addUser(newUser);
-    }
+//    @PostMapping("/users")
+//    User addUser(@RequestBody User newUser) {
+//        return service.addUser(newUser);
+//    }
 
 
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,9 +19,38 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
+
+
+
+//    @GetMapping("/dates/{date}")
+//    List<MovieView> findAllByDate(@PathVariable String date) {
+//        LocalDate localDate = LocalDate.parse(date);
+//        return movieRepository.findAllMoviesByDate(localDate);
+//    }
+
+  @GetMapping("/intertest")
+    List<MovieView> findInterTest() {
+        return movieRepository.findInter();
+    }
+
+    @GetMapping("/movieinterface")
+    List<MovieView> findWithInterface() {
+        return movieRepository.findTitles();
+    }
+
+    @GetMapping("/moviestest")
+    List<Object[]> getTitle() {
+        return movieRepository.getTitle();
+    }
+
     @GetMapping("/movies")
     List<Movie> findAllMovies() {
         return movieRepository.findAll();
+    }
+
+    @GetMapping("/movieTitles")
+    List<String> findAllTitles() {
+        return movieRepository.findAllTitles();
     }
 
 //    @GetMapping

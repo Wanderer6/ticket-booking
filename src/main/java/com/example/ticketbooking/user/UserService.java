@@ -28,7 +28,7 @@ public class UserService {
         return repository.findById(id).orElseThrow(() -> new ResourceException(HttpStatus.NOT_FOUND, "Did not find user id = " + id));
     }
 
-    public User addUser(User toSave) {
-        return repository.save(toSave);
-    }
+//    public User addUser(User toSave) {
+//        return repository.save(toSave);
+//    }
 }

@@ -1,6 +1,10 @@
 package com.example.ticketbooking.user;
 
+import com.example.ticketbooking.reservation.Reservation;
+import com.example.ticketbooking.screening.Screening;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -10,15 +14,16 @@ public class User {
     private int id;
     private String name;
     private String surname;
-    private String ticketType;
+    @OneToMany(mappedBy = "user")
+    private Set<Reservation> reservations;
+
 
     public User() {
     }
 
-    public User(String name, String surname, String ticketType) {
+    public User(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.ticketType = ticketType;
     }
 
     public int getId() {
@@ -45,12 +50,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getTicketType() {
-        return ticketType;
+    public Set<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     @Override
@@ -59,7 +64,6 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", ticketType='" + ticketType + '\'' +
                 '}';
     }
 }

@@ -11,6 +11,8 @@ public interface UserRepository {
 
     List<User> findAllStudents();
 
-    User save(User entity);
+//    User save(User entity);
+
+    User getById(Integer id);
 
 }

@@ -1,6 +1,10 @@
 package com.example.ticketbooking.seat;
 
+import com.example.ticketbooking.reservation.Reservation;
 import com.example.ticketbooking.room.Room;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -14,6 +18,11 @@ public class Seat {
     private int seatRow;
     private int seatNumber;
     private boolean availability;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
@@ -21,11 +30,12 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(int id, int seatRow, int seatNumber, boolean availability, Room room) {
+    public Seat(int id, int seatRow, int seatNumber, boolean availability, Reservation reservation, Room room) {
         this.id = id;
         this.seatRow = seatRow;
         this.seatNumber = seatNumber;
         this.availability = availability;
+        this.reservation = reservation;
         this.room = room;
     }
 
@@ -53,12 +63,28 @@ public class Seat {
         this.seatNumber = seatNumber;
     }
 
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
     public Room getRoom() {
         return room;
     }
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     @Override
@@ -68,6 +94,7 @@ public class Seat {
                 ", seatRow=" + seatRow +
                 ", seatNumber=" + seatNumber +
                 ", availability=" + availability +
+                ", reservation=" + reservation +
                 ", room=" + room +
                 '}';
     }

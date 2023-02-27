@@ -1,33 +1,37 @@
 package com.example.ticketbooking.movie;
 
+import com.example.ticketbooking.screening.Screening;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Movies")
 public class Movie {
 
+    @JsonIgnore
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-//    private LocalDateTime screeningTime;
-    private int roomNumber;
+    @JsonIgnore
+//    @JsonManagedReference
+//    @JsonBackReference
+    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
+    private Set<Screening> screenings;
 
     public Movie() {
     }
 
-    public Movie(String title, int roomNumber) {
+    public Movie(int id, String title) {
+        this.id = id;
         this.title = title;
-        this.roomNumber = roomNumber;
     }
 
-
-
-//    public Movie(String title, LocalDateTime screeningTime, int roomNumber) {
-//        this.title = title;
-//        this.screeningTime = screeningTime;
-//        this.roomNumber = roomNumber;
-//    }
 
     public int getId() {
         return id;
@@ -45,20 +49,12 @@ public class Movie {
         this.title = title;
     }
 
-    //    public LocalDateTime getScreeningTime() {
-//        return screeningTime;
-//    }
-//
-//    public void setScreeningTime(LocalDateTime screeningTime) {
-//        this.screeningTime = screeningTime;
-//    }
-
-    public int getRoomNumber() {
-        return roomNumber;
+    public Set<Screening> getScreenings() {
+        return screenings;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setScreenings(Set<Screening> screenings) {
+        this.screenings = screenings;
     }
 
     @Override
@@ -66,7 +62,6 @@ public class Movie {
         return "Movie{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", roomNumber=" + roomNumber +
                 '}';
     }
 }
