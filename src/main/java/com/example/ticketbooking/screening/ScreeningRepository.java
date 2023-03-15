@@ -13,9 +13,6 @@ public interface ScreeningRepository {
     List<ScreeningWithMovieTitleView> findScreenings();
     List<ScreeningWithMovieTitleViewDTO> findByDate(@Param("date") LocalDate date);
     List<ScreeningWithMovieTitleView> findByDateAndTimeInterval(@Param("date") LocalDate date, @Param("startTime") String startTime, @Param("endTime") String endTime);
-//    List<ScreeningWithRoomAndSeatsDTO> findByTitleAndDateAndTime(@Param("title") String title, @Param("date") LocalDate date, @Param("time") String time);
-
-//    List<ScreeningWithRoomAndSeatsDTO> test();
     List<ScreeningWithRoomAndSeatsView> test2();
     List<ScreeningWithRoomAndSeatsView> findByTitleAndDateAndTime(@RequestParam String title, @RequestParam LocalDate date, @RequestParam String time);
 

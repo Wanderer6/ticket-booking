@@ -17,11 +17,12 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String ticketType;
+//    private String ticketType;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne
+//    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "screening_id")
     private Screening screening;
     @JsonManagedReference
@@ -32,7 +33,7 @@ public class Reservation {
     }
 
     public Reservation(String ticketType, User user, Screening screening, Set<Seat> seats) {
-        this.ticketType = ticketType;
+//        this.ticketType = ticketType;
         this.user = user;
         this.screening = screening;
         this.seats = seats;
@@ -46,13 +47,13 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getTicketType() {
-        return ticketType;
-    }
+//    public String getTicketType() {
+//        return ticketType;
+//    }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
+//    public void setTicketType(String ticketType) {
+//        this.ticketType = ticketType;
+//    }
 
     public User getUser() {
         return user;
@@ -82,7 +83,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", ticketType='" + ticketType + '\'' +
+//                ", ticketType='" + ticketType + '\'' +
                 ", user=" + user +
                 ", screening=" + screening +
                 ", seats=" + seats +

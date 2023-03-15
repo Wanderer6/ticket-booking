@@ -17,6 +17,7 @@ public class Seat {
     private int id;
     private int seatRow;
     private int seatNumber;
+    private String ticketType;
     private boolean availability;
     @JsonBackReference
     @ManyToOne
@@ -30,14 +31,24 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(int id, int seatRow, int seatNumber, boolean availability, Reservation reservation, Room room) {
+    public Seat(int id, int seatRow, int seatNumber, String ticketType, boolean availability, Reservation reservation, Room room) {
         this.id = id;
         this.seatRow = seatRow;
         this.seatNumber = seatNumber;
+        this.ticketType = ticketType;
         this.availability = availability;
         this.reservation = reservation;
         this.room = room;
     }
+
+//    public Seat(int id, int seatRow, int seatNumber, boolean availability, Reservation reservation, Room room) {
+//        this.id = id;
+//        this.seatRow = seatRow;
+//        this.seatNumber = seatNumber;
+//        this.availability = availability;
+//        this.reservation = reservation;
+//        this.room = room;
+//    }
 
     public int getId() {
         return id;
@@ -61,6 +72,14 @@ public class Seat {
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+    public String getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(String ticketType) {
+        this.ticketType = ticketType;
     }
 
     public boolean isAvailability() {
@@ -93,6 +112,7 @@ public class Seat {
                 "id=" + id +
                 ", seatRow=" + seatRow +
                 ", seatNumber=" + seatNumber +
+                ", ticketType='" + ticketType + '\'' +
                 ", availability=" + availability +
                 ", reservation=" + reservation +
                 ", room=" + room +

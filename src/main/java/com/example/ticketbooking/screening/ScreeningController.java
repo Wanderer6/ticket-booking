@@ -47,10 +47,6 @@ public class ScreeningController {
         return screeningRepository.findByTitleAndDateAndTime(title, localDate, time);
     }
 
-//    @GetMapping("/test")
-//    List<ScreeningWithRoomAndSeatsDTO> test() {
-//        return screeningRepository.test();
-//    }
     @GetMapping("/test2")
     List<ScreeningWithRoomAndSeatsView> test2() {
         return screeningRepository.test2();

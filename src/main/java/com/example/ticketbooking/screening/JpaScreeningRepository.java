@@ -18,38 +18,14 @@ public interface JpaScreeningRepository extends ScreeningRepository, JpaReposito
     @Override
     @Query("Select s from Screening s")
     List<ScreeningWithMovieTitleView> findScreenings();
-//    @Override
-//    @Query("Select s from Screening s join s.movie where s.movieDate = :date")
-//    List<ScreeningWithMovieTitleView> findByDate(@Param("date") LocalDate date);
+
     @Override
     @Query("Select new com.example.ticketbooking.screening.ScreeningWithMovieTitleViewDTO(s.movie.title, s.movieDate, s.movieStartTime) from Screening s join s.movie where s.movieDate = :date")
     List<ScreeningWithMovieTitleViewDTO> findByDate(@Param("date") LocalDate date);
 
     @Override
-    @Query("Select s from Screening s join s.movie where s.movieDate = :date and s.movieStartTime between :startTime and :endTime")
+    @Query("Select s from Screening s join s.movie where s.movieDate = :date and s.movieStartTime between :startTime and :endTime ORDER BY s.movieStartTime, s.movie.title")
     List<ScreeningWithMovieTitleView> findByDateAndTimeInterval(@Param("date") LocalDate date, @Param("startTime") String startTime, @Param("endTime") String endTime);
-
-//    @Override
-//    @Query("Select new com.example.ticketbooking.screening.ScreeningWithRoomAndSeatsDTO(s.movie.title, s.movieDate, s.movieStartTime, s.rooms.roomNumber, s.rooms.seats) " +
-//            "from Screening s join s.movie join s.rooms where s.movieDate = :date and s.movie.title = :title and s.movieStartTime = :time " +
-//            "and s.room_id = s.rooms.id")
-//    @Override
-//    @Query("Select new com.example.ticketbooking.screening.ScreeningWithRoomAndSeatsDTO(s.movie.title, s.movieDate, s.movieStartTime, r.roomNumber, " +
-//            "seat.seatRow, seat.seatNumber, seat.availability) " +
-//            "from Screening s JOIN s.rooms r JOIN r.seats seat where s.movie.title = :title AND s.movieDate = :date AND s.movieStartTime = :time")
-//    List<ScreeningWithRoomAndSeatsDTO> findByTitleAndDateAndTime(@Param("title") String title, @Param("date") LocalDate date, @Param("time") String time);
-
-//    @Override
-//    @Query("Select s, r FROM Screening s JOIN s.rooms r where s.movie.title = 'Batman'")
-//    @Query("Select new com.example.ticketbooking.screening.ScreeningWithRoomAndSeatsDTO(" +
-//            "s.movie.title, s.movieDate, s.movieStartTime, r.roomNumber, seats) " +
-//            "from Screening s " +
-//            "JOIN s.rooms r " +
-//            "JOIN r.seats seats")
-//    @Query("Select s FROM Screening s JOIN s.rooms r where s.room_id = s.r.id")
-//    @Query("Select s FROM Screening s JOIN s.rooms r on sr.room_id = r.id " +
-//            "JOIN screeningRoom sr on s.id = sr.screening_id")
-//    List<ScreeningWithRoomAndSeatsDTO> test();
 
 
     @Override
