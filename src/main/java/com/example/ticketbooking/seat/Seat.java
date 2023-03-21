@@ -4,7 +4,6 @@ import com.example.ticketbooking.reservation.Reservation;
 import com.example.ticketbooking.room.Room;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -40,15 +39,6 @@ public class Seat {
         this.reservation = reservation;
         this.room = room;
     }
-
-//    public Seat(int id, int seatRow, int seatNumber, boolean availability, Reservation reservation, Room room) {
-//        this.id = id;
-//        this.seatRow = seatRow;
-//        this.seatNumber = seatNumber;
-//        this.availability = availability;
-//        this.reservation = reservation;
-//        this.room = room;
-//    }
 
     public int getId() {
         return id;

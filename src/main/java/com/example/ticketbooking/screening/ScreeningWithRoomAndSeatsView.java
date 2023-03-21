@@ -1,13 +1,9 @@
 package com.example.ticketbooking.screening;
 
-import com.example.ticketbooking.seat.Seat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.Target;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public interface ScreeningWithRoomAndSeatsView {
     @Value("#{target.movie.title}")

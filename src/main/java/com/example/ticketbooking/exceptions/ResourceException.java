@@ -9,7 +9,6 @@ public class ResourceException extends RuntimeException {
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }
-
     public ResourceException(HttpStatus httpStatus, String message) {
         super(message);
         this.httpStatus = httpStatus;

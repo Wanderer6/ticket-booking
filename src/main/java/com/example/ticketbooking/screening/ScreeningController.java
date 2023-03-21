@@ -13,7 +13,6 @@ public class ScreeningController {
 
     private final ScreeningRepository screeningRepository;
 
-
     public ScreeningController(ScreeningRepository screeningRepository) {
         this.screeningRepository = screeningRepository;
     }

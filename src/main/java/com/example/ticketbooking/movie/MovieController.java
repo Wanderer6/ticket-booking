@@ -2,13 +2,8 @@ package com.example.ticketbooking.movie;
 
 import com.example.ticketbooking.exceptions.ResourceException;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class MovieController {
@@ -18,15 +13,6 @@ public class MovieController {
     MovieController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
-
-
-
-
-//    @GetMapping("/dates/{date}")
-//    List<MovieView> findAllByDate(@PathVariable String date) {
-//        LocalDate localDate = LocalDate.parse(date);
-//        return movieRepository.findAllMoviesByDate(localDate);
-//    }
 
   @GetMapping("/intertest")
     List<MovieView> findInterTest() {
@@ -52,11 +38,6 @@ public class MovieController {
     List<String> findAllTitles() {
         return movieRepository.findAllTitles();
     }
-
-//    @GetMapping
-//    List<Movie> findMoviesOnGivenDay() {
-//        return movieRepository.
-//    }
 
     @GetMapping("/titles/{title}")
     List<Movie> findByTitle(@PathVariable String title) {

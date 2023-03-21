@@ -3,8 +3,6 @@ package com.example.ticketbooking.reservation;
 import com.example.ticketbooking.screening.Screening;
 import com.example.ticketbooking.seat.Seat;
 import com.example.ticketbooking.user.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,11 +15,9 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    private String ticketType;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-//    @OneToOne
     @ManyToOne
     @JoinColumn(name = "screening_id")
     private Screening screening;
@@ -32,8 +28,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(String ticketType, User user, Screening screening, Set<Seat> seats) {
-//        this.ticketType = ticketType;
+    public Reservation(User user, Screening screening, Set<Seat> seats) {
         this.user = user;
         this.screening = screening;
         this.seats = seats;
@@ -46,14 +41,6 @@ public class Reservation {
     public void setId(int id) {
         this.id = id;
     }
-
-//    public String getTicketType() {
-//        return ticketType;
-//    }
-
-//    public void setTicketType(String ticketType) {
-//        this.ticketType = ticketType;
-//    }
 
     public User getUser() {
         return user;
@@ -83,7 +70,6 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-//                ", ticketType='" + ticketType + '\'' +
                 ", user=" + user +
                 ", screening=" + screening +
                 ", seats=" + seats +

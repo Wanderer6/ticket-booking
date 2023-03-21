@@ -34,17 +34,11 @@ public class ReservationController {
     ReservationResponseDTO saveReservation(@RequestBody ReservationRequestDTO reservationRequest) {
 
         int screeningId = reservationRequest.getScreeningId();
-//        List<Integer> seatIds = reservationRequest.getSeatIds();
         List<Integer> seatIds = reservationRequest.getSeats().stream().map(SeatRequestDTO::getId).toList();
-//        List<SeatRequestDTO> tempSeats = reservationRequest.getSeats();
-//        List<Integer> seatIds = new ArrayList<>();
-//        tempSeats.forEach( seat -> seatIds.add(seat.getId() ));
 
-//        if (seatIds == null || seatIds.isEmpty() ) {
         if (seatIds.isEmpty() ) {
             throw new ResourceException(HttpStatus.NOT_FOUND, "No seats chosen, please choose at least one seat");
         }
-
 
         Set<Seat> reservationSeats = new HashSet<>(seatRepository.findAllById(seatIds));
         List<Integer> reservedSeatIds = reservationSeats.stream().filter(seat -> !seat.isAvailability()).map(Seat::getId).toList();
@@ -61,7 +55,6 @@ public class ReservationController {
             throw new ResourceException(HttpStatus.NOT_FOUND, errorMessage);
         }
 
-//        String ticketType = reservationRequest.getTicketType();
         List<String> ticketTypes = reservationRequest.getSeats().stream().map(SeatRequestDTO::getTicketType).toList();
         Reservation newReservation = new Reservation();
 
@@ -73,7 +66,6 @@ public class ReservationController {
 
         User newUser = new User();
 
-        // Check name and surname conditions then set them
         if (name.length() < 3 || Character.isLowerCase(name.charAt(0))) {
             throw new ResourceException(HttpStatus.BAD_REQUEST, "Name has to be at least 3 characters long and start with a capital letter");
         } else newUser.setName(name);
@@ -83,7 +75,6 @@ public class ReservationController {
         } else newUser.setSurname(surname);
 
         userRepository.save(newUser);
-
 
         Map<Integer, List<Seat>> reservationSeatsByRow = reservationSeats.stream()
                 .collect(Collectors.groupingBy(Seat::getSeatRow));
@@ -128,10 +119,6 @@ public class ReservationController {
             }
         }
 
-
-
-//        newReservation.setTicketType(ticketType);
-
         Screening screening = screeningRepository.findById(screeningId).orElseThrow(() -> new ResourceException(HttpStatus.NOT_FOUND, "Wrong screening id or no screening chosen"));
         newReservation.setScreening(screening);
         newReservation.setUser(newUser);
@@ -143,7 +130,6 @@ public class ReservationController {
             seat.setAvailability(false);
             seat.setTicketType(seatRequest.getTicketType());
             seatRepository.save(seat);
-
         }
 
         List<SeatInfo> seatInfoList = new ArrayList<>();
@@ -152,12 +138,10 @@ public class ReservationController {
         });
 
         ReservationResponseDTO responseDTO = new ReservationResponseDTO(
-//                newReservation.getTicketType(),
                 ticketCost,
                 newUser.getName(),
                 newUser.getSurname(),
                 seatInfoList);
-
         return responseDTO;
     }
 

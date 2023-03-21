@@ -1,10 +1,7 @@
 package com.example.ticketbooking.movie;
 
 import com.example.ticketbooking.screening.Screening;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -19,8 +16,6 @@ public class Movie {
     private int id;
     private String title;
     @JsonIgnore
-//    @JsonManagedReference
-//    @JsonBackReference
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
     private Set<Screening> screenings;
 
@@ -31,7 +26,6 @@ public class Movie {
         this.id = id;
         this.title = title;
     }
-
 
     public int getId() {
         return id;

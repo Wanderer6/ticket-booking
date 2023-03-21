@@ -15,6 +15,7 @@ public interface JpaScreeningRepository extends ScreeningRepository, JpaReposito
     @Override
     @Query("Select distinct(s.movieDate) from Screening s")
     List<LocalDate> findDates();
+
     @Override
     @Query("Select s from Screening s")
     List<ScreeningWithMovieTitleView> findScreenings();
@@ -27,14 +28,12 @@ public interface JpaScreeningRepository extends ScreeningRepository, JpaReposito
     @Query("Select s from Screening s join s.movie where s.movieDate = :date and s.movieStartTime between :startTime and :endTime ORDER BY s.movieStartTime, s.movie.title")
     List<ScreeningWithMovieTitleView> findByDateAndTimeInterval(@Param("date") LocalDate date, @Param("startTime") String startTime, @Param("endTime") String endTime);
 
-
     @Override
     @Query("Select s from Screening s " +
             "join s.rooms r " +
             "join s.movie m " +
             "where m.title = :title and s.movieDate = :date and s.movieStartTime = :time")
     List<ScreeningWithRoomAndSeatsView> findByTitleAndDateAndTime(@RequestParam String title, @RequestParam LocalDate date, @RequestParam String time);
-
 
     @Override
     @Query("SELECT s from Screening s " +

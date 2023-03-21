@@ -4,21 +4,11 @@ import java.util.List;
 
 public class ReservationRequestDTO {
 
-//    private String ticketType;
     private int screeningId;
-//    private List<Integer> seatIds;
     private String name;
     private String surname;
 
     private List<SeatRequestDTO> seats;
-
-//    public String getTicketType() {
-//        return ticketType;
-//    }
-
-//    public void setTicketType(String ticketType) {
-//        this.ticketType = ticketType;
-//    }
 
     public int getScreeningId() {
         return screeningId;
@@ -27,14 +17,6 @@ public class ReservationRequestDTO {
     public void setScreeningId(int screeningId) {
         this.screeningId = screeningId;
     }
-
-//    public List<Integer> getSeatIds() {
-//        return seatIds;
-//    }
-
-//    public void setSeatIds(List<Integer> seatIds) {
-//        this.seatIds = seatIds;
-//    }
 
     public String getName() {
         return name;

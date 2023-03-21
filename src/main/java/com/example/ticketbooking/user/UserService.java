@@ -3,7 +3,6 @@ package com.example.ticketbooking.user;
 import com.example.ticketbooking.exceptions.ResourceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -28,7 +27,4 @@ public class UserService {
         return repository.findById(id).orElseThrow(() -> new ResourceException(HttpStatus.NOT_FOUND, "Did not find user id = " + id));
     }
 
-//    public User addUser(User toSave) {
-//        return repository.save(toSave);
-//    }
 }

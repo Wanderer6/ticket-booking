@@ -17,12 +17,9 @@ public class Screening {
     private int id;
     private LocalDate movieDate;
     private String movieStartTime;
-//    @OneToOne(mappedBy = "screening")
     @OneToMany(mappedBy = "screening")
     private Set<Reservation> reservations;
     @JsonIgnore
-//    @JsonBackReference
-//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
@@ -35,7 +32,6 @@ public class Screening {
     )
     private Set<Room> rooms;
 
-
     public Screening() {
     }
 
@@ -45,11 +41,6 @@ public class Screening {
         this.movie = movie;
         this.rooms = rooms;
     }
-
-//    public Screening(Movie movie, Set<Room> rooms) {
-//        this.movie = movie;
-//        this.rooms = rooms;
-//    }
 
     public int getId() {
         return id;
@@ -82,14 +73,6 @@ public class Screening {
     public void setReservations(Set<Reservation> reservations) {
         this.reservations = reservations;
     }
-
-//    public Reservation getReservation() {
-//        return reservation;
-//    }
-//
-//    public void setReservation(Reservation reservation) {
-//        this.reservation = reservation;
-//    }
 
     public Movie getMovie() {
         return movie;

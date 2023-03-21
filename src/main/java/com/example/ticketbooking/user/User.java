@@ -1,7 +1,6 @@
 package com.example.ticketbooking.user;
 
 import com.example.ticketbooking.reservation.Reservation;
-import com.example.ticketbooking.screening.Screening;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,7 +15,6 @@ public class User {
     private String surname;
     @OneToMany(mappedBy = "user")
     private Set<Reservation> reservations;
-
 
     public User() {
     }
