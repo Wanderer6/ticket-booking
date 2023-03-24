@@ -28,7 +28,7 @@ public class ScreeningController {
     }
 
     @GetMapping("/by-date")
-    List<ScreeningWithMovieTitleViewDTO> findByDate(@RequestParam String date) {
+    List<ScreeningWithMovieTitleDTO> findByDate(@RequestParam String date) {
 
         LocalDate localDate = LocalDate.parse(date);
         return screeningRepository.findByDate(localDate);
@@ -44,10 +44,5 @@ public class ScreeningController {
     List<ScreeningWithRoomAndSeatsView> findByTitleAndDateAndTime(@RequestParam String title, @RequestParam String date, @RequestParam String time) {
         LocalDate localDate = LocalDate.parse(date);
         return screeningRepository.findByTitleAndDateAndTime(title, localDate, time);
-    }
-
-    @GetMapping("/test2")
-    List<ScreeningWithRoomAndSeatsView> test2() {
-        return screeningRepository.test2();
     }
 }

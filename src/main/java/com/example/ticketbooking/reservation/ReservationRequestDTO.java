@@ -1,5 +1,7 @@
 package com.example.ticketbooking.reservation;
 
+import com.example.ticketbooking.seat.SeatRequestDTO;
+
 import java.util.List;
 
 public class ReservationRequestDTO {

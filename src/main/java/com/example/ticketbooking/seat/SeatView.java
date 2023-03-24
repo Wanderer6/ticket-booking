@@ -1,12 +1,12 @@
-package com.example.ticketbooking.reservation;
+package com.example.ticketbooking.seat;
 
-public class SeatInfo {
+public class SeatView {
 
     private int seatRow;
     private int seatNumber;
     private String ticketType;
 
-    public SeatInfo(int seatRow, int seatNumber, String ticketType) {
+    public SeatView(int seatRow, int seatNumber, String ticketType) {
         this.seatRow = seatRow;
         this.seatNumber = seatNumber;
         this.ticketType = ticketType;

@@ -1,4 +1,4 @@
-package com.example.ticketbooking.reservation;
+package com.example.ticketbooking.seat;
 
 public class SeatRequestDTO {
     private int id;

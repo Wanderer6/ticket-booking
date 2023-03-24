@@ -1,14 +1,16 @@
 package com.example.ticketbooking.reservation;
 
+import com.example.ticketbooking.seat.SeatView;
+
 import java.util.List;
 
 public class ReservationResponseDTO {
     private double ticketCost;
     private String userName;
     private String userSurname;
-    private List<SeatInfo> seats;
+    private List<SeatView> seats;
 
-    public ReservationResponseDTO(double ticketCost, String userName, String userSurname, List<SeatInfo> seats) {
+    public ReservationResponseDTO(double ticketCost, String userName, String userSurname, List<SeatView> seats) {
         this.ticketCost = ticketCost;
         this.userName = userName;
         this.userSurname = userSurname;
@@ -27,7 +29,7 @@ public class ReservationResponseDTO {
         return userSurname;
     }
 
-    public List<SeatInfo> getSeats() {
+    public List<SeatView> getSeats() {
         return seats;
     }
 }

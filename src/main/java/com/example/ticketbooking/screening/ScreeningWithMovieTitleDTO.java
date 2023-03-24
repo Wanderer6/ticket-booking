@@ -2,12 +2,12 @@ package com.example.ticketbooking.screening;
 
 import java.time.LocalDate;
 
-public class ScreeningWithMovieTitleViewDTO {
+public class ScreeningWithMovieTitleDTO {
     private String movieTitle;
     private LocalDate movieDate;
     private String movieStartTime;
 
-    public ScreeningWithMovieTitleViewDTO(String movieTitle, LocalDate movieDate, String movieStartTime) {
+    public ScreeningWithMovieTitleDTO(String movieTitle, LocalDate movieDate, String movieStartTime) {
         this.movieTitle = movieTitle;
         this.movieDate = movieDate;
         this.movieStartTime = movieStartTime;
