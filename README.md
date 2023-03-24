@@ -1,5 +1,5 @@
 # ticket-booking
-Seat reservation system for a multiplex
+Seat reservation system for a cinema
 
 ## Technologies Used
 Java 17
