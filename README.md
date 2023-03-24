@@ -94,6 +94,8 @@ Name and surname have to be at least 3 characters long, starting with capital le
 
 When making a reservation there cannot be a single vacant seat left
 
+There are 3 types of tickets: adult, student and child
+
 URL: 
 ```
 http://localhost:8080/reservation
